@@ -136,7 +136,9 @@ public class MailTest {
         driver.findElement(By.xpath(DRAFT_LINK)).click();
         driver.findElement(By.xpath(DRAFT_ITEM)).click();
         driver.findElement(By.xpath(DRAFT_SEND)).click();
-        driver.findElement(By.xpath(DRAFT_LINK)).click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement elementDraft = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(DRAFT_LINK)));
+        elementDraft.click();
 
         Assert.assertTrue(isElementPresent(By.xpath(DRAFT_ITEM)), "Looks like draft present");
         driver.findElement(By.xpath(SENT_LINK)).click();
